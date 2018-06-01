@@ -1,0 +1,5 @@
+* A pointer  stores the address of a variable or a memory location
+* To access the address of a variabe we use amphersand (&)
+* To access the value of the variable we use astrick (*)
+* Advantages: Reusability of memory using pointers
+              Memory will be free only if the pointer is destroyed.
