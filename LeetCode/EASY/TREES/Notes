@@ -1,0 +1,47 @@
+Problems to be solved on TREES from leetcode:
+
+104 - done,
+112 - done,
+637 - done
+872 - done
+404 - done
+
+226 - done
+100 - done
+107 - done
+
+257 - done
+101 - done
+108 - done
+109. Convert Sorted List to Binary Search Tree - MEDIUM
+
+783 - done
+653 - done
+993 - done
+
+Medium: 
+102 - done
+
+18 FEB:
+TASK#1
+5 TIMES TODAY - bfs(level order traversal)
+
+TASK#2
+ALL THE BELOW PROBLEMS SHOULD BE OF 3 SETS - 1 SET A DAY
+top view, left view, right view, bottom view, diameter of tree, 
+dfs(column order traversal), 
+
+TASK#3
+5 porblems for TODAY
+3/5 done(excluding problems from the above task#2 list)
+
+
+
+
+Geeks for Geeks:
+Basic - TREES
+Easy - TREES
+    1, 3
+max(dist(root->left), dist(root->right))
+
+pathfromcrnt = leftDist+rightDist;

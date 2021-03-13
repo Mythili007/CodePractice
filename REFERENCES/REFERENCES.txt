@@ -1,0 +1,7 @@
+REFERENCES
+
+https://aonecode.com/amazon-interview-questions
+
+https://www.yoreoyster.com/review/tech-interview-pro/
+
+https://www.quora.com/What-is-the-best-strategy-to-solve-LeetCode-problems

@@ -1,0 +1,29 @@
+1
+4
+hasan jaddouh
+farhod khakimiyon
+kerim kochekov
+hasan khateeb
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
+
+// declare global variables
+var input_stdin = "";
+var chunks = "";
+var input_currentline = 0;
+
+// standard input is stored into input_stdin
+process.stdin.on('data', function (data) {
+    input_stdin += data;
+    console.log(data);
+});
+
+// standard input is done and stored into an array
+process.stdin.on('end', function () {
+    chunks = input_stdin.split("");
+    start();    
+});
+
+function start() {
+    console.log(chunks);
+}
