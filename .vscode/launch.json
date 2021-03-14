@@ -4,26 +4,26 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-    {
-        "type": "java",
-        "name": "Debug (Launch)",
-        "request": "launch",
-        "cwd": "${/home/mythili/Desktop/Code_personal/cPractice/Pointers/LinkedList}",
-        "console": "internalConsole",
-        "stopOnEntry": false,
-        "mainClass": "",
-        "args": ""
-    },
+        /* {
+            "type": "java",
+            "name": "Debug (Launch)",
+            "request": "launch",
+            "cwd": "${/home/mythili/Desktop/Code_personal/cPractice/Pointers/LinkedList}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "",
+            "args": ""
+        }, */
         {
-            "name": "(g++) Launch",
+            "name": "g++ - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",
-            "program": "$/home/mythili/Desktop/Code_personal/cPractice/Pointers/LinkedList/deleteElementFromListByIndex.cpp",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${/home/mythili/Desktop/Code_personal/cPractice/Pointers/LinkedList}",
+            "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true,
+            "externalConsole": false,
             "MIMode": "gdb",
             "setupCommands": [
                 {
@@ -31,7 +31,9 @@
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
-            ]
+            ],
+            "preLaunchTask": "C/C++: g++ build active file",
+            "miDebuggerPath": "/usr/bin/gdb"
         }
     ]
 }

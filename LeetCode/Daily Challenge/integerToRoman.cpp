@@ -9,7 +9,39 @@ using namespace std;
 class Solution
 {
 public:
-    string intToRoman(int num) {
+    int getClosest(int num)
+    {
+        int closest;
+        if (num >= 1000)
+            closest = 1000;
+        else if (num >= 900)
+            closest = 900;
+        else if (num >= 500)
+            closest = 500;
+        else if (num >= 400)
+            closest = 400;
+        else if (num >= 100)
+            closest = 100;
+        else if (num >= 90)
+            closest = 90;
+        else if (num >= 50)
+            closest = 50;
+        else if (num >= 40)
+            closest = 40;
+        else if (num >= 10)
+            closest = 10;
+        else if (num >= 9)
+            closest = 9;
+        else if (num >= 5)
+            closest = 5;
+        else if (num >= 4)
+            closest = 4;
+        else
+            closest = 1;
+        return closest;
+    }
+    string intToRoman(int num)
+    {
         map<int, string> m;
         m[1] = "I";
         m[5] = "V";
@@ -25,23 +57,24 @@ public:
         m[90] = "XC";
         m[400] = "CD";
         m[900] = "CM";
-
-        while(num > 0){
-            int r = num%10;
-            r*pow(10, 0);
+        string res;
+        while (num > 0)
+        {
+            int n = getClosest(num);
+            res += m[n];
+            num = num - n;
         }
+        return res;
     }
 };
 
 void _main()
 {
     Solution sol;
-    vector<int> a = {1, 2, 3, 9};
-    int k = 34;
-
-    vector<int> res = sol.addToArrayForm(a, k);
-    for (int i : res)
-        cout << i << " ";
+    int num = 1994;
+    num = 100;
+    string res = sol.intToRoman(num);
+    cout << res << endl;
     cout << endl;
 }
 

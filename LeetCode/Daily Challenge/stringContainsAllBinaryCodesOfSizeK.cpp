@@ -10,29 +10,26 @@ using namespace std;
 class Solution
 {
 public:
-    vector<string> getSubStringsOfLenK(string s, int k)
-    {
-        vector<string> res;
-        for (int i = 0; i < s.size(); i++)
-        {
-            for (int j = 1; j <= s.size() - i; j++)
-            {
-                string st = s.substr(i, j);
-                if (st.size() == k)
-                    res.push_back(st);
-            }
-        }
-        return res;
-    }
-
     bool hasAllCodes(string s, int k)
     {
         //1 length binary codes: 0, 1
         //2 length binary codes: 00, 01, 10, 11
         //3 length binary codes: 000, 001, 010, 100, 111, 110, 101, 011
         //4 length binary codes: 0000, 1111
-        vector<string> tmp = getSubStringsOfLenK(s, k);
-        return (tmp.size() >= pow(2, k)) ? true : false;
+        int check = 1 << k;
+        set<string> ss;
+        for (int i = k; i < s.length(); i++)
+        {
+            string st = s.substr(i - k, i);
+            if (ss.find(st) == ss.end())
+            {
+                ss.insert(st);
+                check--;
+                if (check == 0)
+                    return true;
+            }
+        }
+        return false;
     }
 };
 
