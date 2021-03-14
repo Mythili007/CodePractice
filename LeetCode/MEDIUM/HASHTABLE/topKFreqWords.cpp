@@ -13,22 +13,25 @@ public:
     vector<string> topKFrequent(vector<string> &words, int k)
     {
         map<string, int> m;
-        for (string st : words)
+        for (string &st : words)
             m[st]++;
 
+        vector<vector<string>> list(words.size());
+        for (auto i : m)
+            list[i.second].push_back(i.first);
+
         vector<string> res;
-        priority_queue<string> minHeap = 
-        while (!pq.empty())
+        for (int i = (int)list.size() - 1; k > 0 && i >= 0; i--)
         {
-            pair<int, string> p = pq.top();
-            cout << "first: " << p.first << "  second: " << p.second << endl;
-            pq.pop();
-            res.push_back(p.second);
-            k--;
+            if (!list[i].empty())
+            {
+                int n = min(k, (int)list[i].size());
+                res.insert(res.end(), list[i].begin(), list[i].begin() + n);
+                k -= n;
+            }
             if (k == 0)
                 break;
         }
-        reverse(res.begin(), res.end());
         return res;
     }
 };
