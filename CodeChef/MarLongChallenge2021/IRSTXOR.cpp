@@ -1,41 +1,82 @@
 #include <bits/stdc++.h>
 using namespace std;
+#define li long int
+#define lli long long int
+
+string converter(int num)
+{
+    string res;
+    while (num > 0)
+    {
+        if (num % 2 == 1)
+            res += "1";
+        else
+            res += "0";
+        num = num / 2;
+    }
+    reverse(res.begin(), res.end());
+    return res;
+}
+
+lli convertBack(string s)
+{
+    lli x = 0, p = 1;
+    for (lli i = s.size() - 1; i >= 0; i--)
+    {
+        x += ((s[i] - '0') * p);
+        p = p * 2;
+    }
+    return x;
+}
 
 int main()
 {
     int t;
-    cin >> t;
-    // t = 1;
+    // cin >> t;
+    t = 1;
     while (t--)
     {
-        long long int c;
-        cin >> c;
-        long long int prod = 0;
-        // long long int a = c<<1;
-        // cout<<"left shift: "<<a<<endl;
-        //13 in powers of 2
-        long long int val = 0, d = 0;
-        while (true)
+        lli c = 10;
+        // cin >> c;
+        vector<bool> checker;
+        string c_binary = converter(c);
+        cout<<c_binary<<endl;
+        /* for (int i = 0; i < c_binary.size(); i++)
         {
-            if (c < pow(2, d))
+            if (c_binary[i] == '0')
+                checker[i] = false;
+            else
+                checker[i] = true;
+        } */
+        bool flag = false;
+        string a = "";
+        string b = "";
+        for (lli i = 0; i < c_binary.size(); i++)
+        {
+            if (c_binary[i] == '0')
             {
-                val = d;
-                break;
+                a += '1';
+                b += '1';
             }
             else
-                d++;
-        }
-        long long int limit = pow(2, val);
-        for (long long int i = 0; i < limit; i++)
-        {
-            for (long long int j = i + 1; j < limit; j++)
             {
-                long long int sum = (i ^ j);
-                if (sum == c)
-                    prod = max(prod, i * j);
+                if (flag)
+                {
+                    a += '0';
+                    b += '1';
+                }
+                else
+                {
+                    a += '1';
+                    b += '0';
+                    flag = true;
+                }
             }
         }
-        cout << prod << endl;
+        lli A = convertBack(a);
+        lli B = convertBack(b);
+
+        cout << A * B << endl;
     }
     return 0;
 }
