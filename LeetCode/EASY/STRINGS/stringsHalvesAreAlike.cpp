@@ -9,7 +9,31 @@ using namespace std;
 class Solution
 {
 public:
+    bool isVowel(char c)
+    {
+        return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U');
+    }
     bool halvesAreAlike(string s)
+    {
+        int left = 0, right = s.size() - 1, left_cnt = 0, right_cnt = 0;
+        while (left < right)
+        {
+            if (isVowel(s[left]))
+                left_cnt++;
+
+            if (isVowel(s[right]))
+                right_cnt++;
+            
+            left++;
+            right--;
+
+            if (left == right)
+                break;
+        }
+        return left_cnt == right_cnt;
+    }
+
+    bool halvesAreAlike_1(string s)
     {
         int x = 0, y = 0;
         for (int i = 0; i < s.length(); i++)
