@@ -20,52 +20,39 @@ struct ListNode
 class Solution
 {
 public:
-    ListNode *reverse(ListNode *node)
+    ListNode *addNumsWithCarry(ListNode *l1, ListNode *l2, int carry)
     {
-        ListNode *tmp = node;
-        ListNode *prev = NULL;
-        while (tmp)
-        {
-            ListNode *tmp1 = tmp->next;
-            tmp->next = prev;
-            prev = tmp;
-            tmp = tmp1;
-        }
-        return prev;
-    }
+        int sum = 0;
+        ListNode* t1 = l1;
+        ListNode* t2 = l2;
 
-    ListNode *addTwoNumWithCarry(ListNode *l1, ListNode *l2, int carry)
-    {
-        ListNode *t1 = l1;
-        ListNode *t2 = l2;
-
-        if (t1 == NULL && t2 == NULL && carry == 0)
+        if(t1 == NULL && t2 == NULL && carry == 0)
             return NULL;
-        if (t1 == NULL && t2 == NULL && carry != 0)
+        
+        if(t1 == NULL && t2 == NULL && carry != 0)
             return new ListNode(carry);
 
         int data1 = (t1 == NULL) ? 0 : t1->val;
         int data2 = (t2 == NULL) ? 0 : t2->val;
+        
+        sum = data1 + data2 + carry;
+        carry = sum/10;
+        sum = sum%10;
+        
+        ListNode* newNode = new ListNode(sum);
 
-        int sum = data1 + data2 + carry;
-        carry = sum / 10;
+        ListNode* t1_next = t1 ? t1->next : NULL;
+        ListNode* t2_next = t2 ? t2->next : NULL;
 
-        ListNode *newNode = new ListNode(sum % 10);
-        ListNode *t1_next = t1 ? t1->next : NULL;
-        ListNode *t2_next = t2 ? t2->next : NULL;
+        newNode->next = addNumsWithCarry(t1->next, t2->next, carry);;
 
-        newNode->next = addTwoNumWithCarry(t1_next, t2_next, carry);
         return newNode;
     }
 
-    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
-    {
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         int carry = 0;
-        l1 = reverse(l1);
-        l2 = reverse(l2);
-        ListNode *newNode = addTwoNumWithCarry(l1, l2, carry);
-        ListNode *res = reverse(newNode);
-        return res;
+        ListNode* newHead = addNumsWithCarry(l1, l2, carry);
+        return newHead;
     }
 };
 
@@ -92,7 +79,14 @@ void _main()
 
     Solution sol;
 
-    cout << sol.mergeTwoLists(head1, head2) << endl;
+    /* vector<int> result = sol.decode(encoded);
+  for(int _r: result) 
+    cout << _r << " ";
+  cout << endl; */
+
+    // sol.doQuery(functionCall, arr, inputs);
+
+    cout << sol.addTwoNumbers(head1, head2) << endl;
 }
 
 int main()
