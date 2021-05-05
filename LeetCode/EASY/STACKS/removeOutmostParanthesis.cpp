@@ -1,4 +1,4 @@
-/**
+/*
  * https://leetcode.com/problems/remove-outermost-parentheses/
  * 1021. Remove Outermost Parentheses
   */
@@ -9,19 +9,16 @@ using namespace std;
 class Solution
 {
 public:
-    string removeOuterParentheses(string s) {
-        stack<char> st;
-        for(int i = 1;i<s.size();i++){
-            if(s[i-1] == '(' && s[i] == ')'){
-                st.push(s[i]);
-                st.push(s[i-1]);
-            }
-        }
+    string removeOuterParentheses(string s)
+    {
+        int opened = 0;
         string res;
-        while(!st.empty()){
-            char ch = st.top();
-            st.pop();
-            res+=ch;
+        for (char ch : s)
+        {
+            if (ch == '(' && opened++ > 0)
+                res += ch;
+            if (ch == ')' && opened-- > 1)
+                res += ch;
         }
         return res;
     }
@@ -33,7 +30,7 @@ void _main()
     string s = "(()())(())";
     s = "(()())(())(()(()))";
     string res = sol.removeOuterParentheses(s);
-    cout<<res<<endl;
+    cout << res << endl;
     cout << endl;
 }
 
