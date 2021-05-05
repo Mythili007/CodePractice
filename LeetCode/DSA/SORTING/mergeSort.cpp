@@ -1,7 +1,7 @@
 
 /**
  * *
- * dkdj
+ * MERGE SORT
  */
 
 #include <bits/stdc++.h>
