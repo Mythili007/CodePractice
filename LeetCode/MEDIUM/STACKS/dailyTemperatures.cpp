@@ -9,7 +9,8 @@ using namespace std;
 class Solution
 {
 public:
-    vector<int> dailyTemperatures(vector<int> &T)
+    // Below solution got TLE
+    vector<int> dailyTemperatures_1(vector<int> &T)
     {
         int c = 0;
         bool found = false;
@@ -35,6 +36,23 @@ public:
                 ans.push_back(0);
         }
         return ans;
+    }
+
+    vector<int> dailyTemperatures(vector<int> &T)
+    {
+        stack<int> st;
+        vector<int> v(T.size(), 0);
+        for (int i = 0; i < T.size(); i++)
+        {
+            while (!st.empty() && T[i] > T[st_ind])
+            {
+                int ind = st.top();
+                st.pop();
+                v[ind] = i - ind;
+            }
+            st.push(i);
+        }
+        return v;
     }
 };
 
